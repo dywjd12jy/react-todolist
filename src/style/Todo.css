@@ -1,0 +1,8 @@
+h2{
+    color: #f00;
+}
+.todo-wrap{
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+}
