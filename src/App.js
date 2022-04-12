@@ -9,6 +9,7 @@ function App() {
     <>
     <div className='wrapper'>
       <Title />
+      ㄱㅏ나다라 깃헙 클론 테스트
       <div className='todo-wrapper'>
         <Todo />
         <Complet />
