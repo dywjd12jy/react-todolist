@@ -1,42 +1,67 @@
 import React, { useState } from "react";
 import "../style/TodoList.css";
 
-
-
 function TodoList() { 
     console.log("1")
 
     // let tdInput = "가나다"
-    const [ tdInput, setTdInput ] = useState("1");
-    // 변수 = setState
-    console.log("2")
+    const [ tdInput, setTdInput ] = useState("");
+    console.log("2");
+    const [todos, setTodos] = useState([]);
+    // console.log(todos)
     // console.log(tdInput);
             // 값,함수 
 
     function inputChange(event) {
-        console.log("3")
+        console.log("4");
         
-        setTdInput(event.target.value)
-        console.log("4")
-        // tdInput = event.target.value
+        setTdInput(event.target.value);
+        console.log("5");
+    }
+   
+    function tdClick(event) {
+        console.log("6")
+        // 기존값을 들고 있다. 
+        setTodos(todos => [...todos, tdInput]);
+        console.log("7");
+        setTdInput("");
+        console.log("8");
+        console.log(todos);
     }
 
-    // console.log(tdInput);
-
-    console.log("5")
+    console.log("9");
     return (
         <>
             <div className="todoList-wrap">
                 <input type= "text" onChange={ inputChange } value={ tdInput }></input>
-                {/* <button onClick={this.addData.bind()}>추가</button> */}
+                <button onClick={ tdClick }>추가</button>
             </div>
             <ul>
                 <li>
-                {tdInput}
+                    {/* {todos} */}
                 </li>
+                {/* {
+                    setTdInput.state.letters.map( event )
+                } */}
             </ul>
         </>
     );
+
+
+    // const todos = ["코드깎는노인 구독하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
+    // const todos2 = todos;
+    // todos2[0] = "코드깎는노인 구독 취소하기";
+    
+    // console.log(todos);
+    // console.log("---------------------");
+    // console.log(todos2);
+
+    /// 룬 예상
+    // todos = ["코드깎는노인 구독하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
+    // todos2 = ["코드깎는노인 구독 취소하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
+
+
+
 
     // 1. TodoList 시작
     // 2. useState는 tdInput(상태유지값) 과 setTdInput(값을 갱신하는 함수) 을 반환하여 초기값이 1로 찍혀나온다.
@@ -50,6 +75,24 @@ function TodoList() {
     // 10. console.4 출력
     // 11. TdInput의 갱신된 값이 input에 보인다. >> value={ tdInput }
 
+
+    // onClick 을 넣은 후 
+    // 1. TodoList 시작 console.1
+    // 2. useState는 tdInput(상태유지값) 과 setTdInput(값을 갱신하는 함수) 을 반환하여 초기값이 1로 찍혀나온다. console.2
+    // 3. useState는 todos(상태유지값) 과 setTodos(값을 갱신하는 함수) 을 반환하여 초기값이 배열로 찍혀나온다. console.3
+    // 4. console.4,5,6,7,8 은 출력되지 않는다.
+    // 5. console.9
+    // 6. return() 안에 있는 태그들이 출력된다.
+    // 7. input 텍스트 입력 시 inputChange 이벤트 발동 setTdInput의 값이 변동된다.( console.4,5 출력 후 console.1239 , 678 은 출력되지 않음 )
+    // 8. 추가 버튼 클릭시 console.6 출력
+    // 9. setTodos 발동 하여 tdInput 의 값을 todos 에 복제 해준다. 
+    // 10. console.7 출력
+    // 11. setTdInput 의 값을 null 시켜준다.
+    // 12. console.8, 9 출력
+    // 13. return() 안에 있는 태그들이 재렌더링 된다.
+    // 14. 
+
+    // todos 에 tdInput을 넣은걸 setTodos 함수를 이용해 todos를 할당했다.
 }
 
 
