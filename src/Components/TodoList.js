@@ -2,47 +2,65 @@ import React, { useState } from "react";
 import "../style/TodoList.css";
 
 function TodoList() { 
-    console.log("1")
+    // console.log("1")
 
     // let tdInput = "가나다"
     const [ tdInput, setTdInput ] = useState("");
-    console.log("2");
+    // console.log("2");
     const [todos, setTodos] = useState([]);
     // console.log(todos)
     // console.log(tdInput);
             // 값,함수 
 
     function inputChange(event) {
-        console.log("4");
+        // console.log("4");
         
         setTdInput(event.target.value);
-        console.log("5");
+        // console.log("5");
     }
    
-    function tdClick(event) {
-        console.log("6")
+    function addTodoBtn(event) {
+        // console.log("6")
         // 기존값을 들고 있다. 
         setTodos(todos => [...todos, tdInput]);
-        console.log("7");
+        // console.log("7");
         setTdInput("");
-        console.log("8");
-        console.log(todos);
+        // console.log("8");
+        // console.log(todos);
     }
 
-    console.log("9");
+    function deleteTodoBtn(todo) {
+        // setTodos.length;
+        // console.log(event.target);
+        // 1. todo 값 과 같은 값을 가지는 값을 todos에서 찾는다.
+        // 2. 찾은 값을 todos 에서 제거한다.
+        // 3. 해당 항목을 제거한 todos 를 반영시킨다.
+
+        const targetIndex = todos.findIndex(value => value === todo);
+        console.log(targetIndex);
+        const updatedTodos = [...todos]; 
+            updatedTodos.splice(targetIndex, 1);
+            setTodos(updatedTodos);
+    }
+
+    // console.log("9");
     return (
         <>
             <div className="todoList-wrap">
                 <input type= "text" onChange={ inputChange } value={ tdInput }></input>
-                <button onClick={ tdClick }>추가</button>
+                <button onClick={ addTodoBtn }>추가</button>
             </div>
             <ul>
-                <li>
-                    {/* {todos} */}
-                </li>
-                {/* {
-                    setTdInput.state.letters.map( event )
-                } */}
+                {
+                    todos.map( 
+                        todo => 
+                        <li key={ todo }> 
+                            <p> {todo} </p>
+                            <button>Complete</button>
+                            <button onClick={ () => deleteTodoBtn(todo) } >Delete</button>
+                        </li>
+                    )
+                }
             </ul>
         </>
     );
