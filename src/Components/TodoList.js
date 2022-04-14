@@ -1,58 +1,57 @@
 import React, { useState } from "react";
-import "../style/TodoList.css";
+import "../style/Complete.css"
 
 function TodoList() { 
-    // console.log("1")
+    console.log("1")
 
-    // let tdInput = "가나다"
     const [ tdInput, setTdInput ] = useState("");
-    // console.log("2");
+    console.log("2");
     const [todos, setTodos] = useState([]);
-    // console.log(todos)
-    // console.log(tdInput);
-            // 값,함수 
+    console.log("3");
 
     function inputChange(event) {
-        // console.log("4");
+        console.log("4");
         
         setTdInput(event.target.value);
-        // console.log("5");
+        console.log("5");
     }
    
     function addTodoBtn(event) {
-        // console.log("6")
+        console.log("6")
         // 기존값을 들고 있다. 
         setTodos(todos => [...todos, tdInput]);
-        // console.log("7");
+        console.log("7");
         setTdInput("");
-        // console.log("8");
-        // console.log(todos);
+        console.log("8");
     }
+    console.log("9");
 
     function deleteTodoBtn(todo) {
-        // setTodos.length;
-        // console.log(event.target);
-        // 1. todo 값 과 같은 값을 가지는 값을 todos에서 찾는다.
-        // 2. 찾은 값을 todos 에서 제거한다.
-        // 3. 해당 항목을 제거한 todos 를 반영시킨다.
+        console.log("10");
 
         const targetIndex = todos.findIndex(value => value === todo);
-        console.log(targetIndex);
+        console.log("11");
 
         const updatedTodos = [...todos]; 
+        console.log("12");
         updatedTodos.splice(targetIndex, 1);
+        console.log("13");
         setTodos(updatedTodos);
+        console.log("14");
     }
 
-    const todoComplete = querySelector("#todoCompleteId");
+    // const todoComplete = querySelector("#todoCompleteId");
+    // console.log("15");
 
-    function moveCompleteBtn(todo) {
-        todoComplete = [...todos];
-    }
+    // function moveCompleteBtn(todo) {
+    //     console.log("16");
+    //     todoComplete = [...todos];
+    //     console.log("17");
+    // }
+    // console.log("18");
     
 
 
-    // console.log("9");
     return (
         <>
             <div className="todoList-wrap">
@@ -65,15 +64,23 @@ function TodoList() {
                         todo => 
                         <li key={ todo }> 
                             <p> {todo} </p>
-                            <button onClick={ () => moveCompleteBtn(todo) }>Complete</button>
-                            <button onClick={ () => deleteTodoBtn(todo) } >Delete</button>
+                            {/* <button onClick={ () => moveCompleteBtn(todo) }>Complete</button> */}
+                            <span>
+                                <button onClick={ () => deleteTodoBtn(todo) } >Delete</button>
+                            </span>
                         </li>
                     )
                 }
+                <li>
+                    <p>adfasdfasdf</p>
+                    <span>
+                        <button>Delete</button>
+                    </span>
+                </li>
             </ul>
-            <ul id="todoCompleteId" className="todoComplete">
+            {/* <ul id="todoCompleteId" className="todoComplete">
 
-            </ul>
+            </ul> */}
         </>
     );
 
@@ -123,6 +130,9 @@ function TodoList() {
     // 14. 
 
     // todos 에 tdInput을 넣은걸 setTodos 함수를 이용해 todos를 할당했다.
+        // 1. todo 값 과 같은 값을 가지는 값을 todos에서 찾는다.
+        // 2. 찾은 값을 todos 에서 제거한다.
+        // 3. 해당 항목을 제거한 todos 를 반영시킨다.
 }
 
 
