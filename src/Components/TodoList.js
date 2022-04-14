@@ -38,10 +38,19 @@ function TodoList() {
 
         const targetIndex = todos.findIndex(value => value === todo);
         console.log(targetIndex);
+
         const updatedTodos = [...todos]; 
-            updatedTodos.splice(targetIndex, 1);
-            setTodos(updatedTodos);
+        updatedTodos.splice(targetIndex, 1);
+        setTodos(updatedTodos);
     }
+
+    const todoComplete = querySelector("#todoCompleteId");
+
+    function moveCompleteBtn(todo) {
+        todoComplete = [...todos];
+    }
+    
+
 
     // console.log("9");
     return (
@@ -56,11 +65,14 @@ function TodoList() {
                         todo => 
                         <li key={ todo }> 
                             <p> {todo} </p>
-                            <button>Complete</button>
+                            <button onClick={ () => moveCompleteBtn(todo) }>Complete</button>
                             <button onClick={ () => deleteTodoBtn(todo) } >Delete</button>
                         </li>
                     )
                 }
+            </ul>
+            <ul id="todoCompleteId" className="todoComplete">
+
             </ul>
         </>
     );
