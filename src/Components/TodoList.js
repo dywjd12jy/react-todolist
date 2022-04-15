@@ -1,45 +1,65 @@
 import React, { useState } from "react";
-import "../style/Complete.css"
+import "../style/Complete.css";
 
 function TodoList() { 
-    console.log("1")
+    //1.TodoList 시작
+            // --console.log("1");
 
     const [ tdInput, setTdInput ] = useState("");
-    console.log("2");
+    //3. useState는 tdInput(상태유지값) 과 setTdInput(값을 갱신하는 함수) 을 반환하여 초기값이 ""로>빈공간으로 찍혀나온다.
+            // --console.log("2");
     const [todos, setTodos] = useState([]);
-    console.log("3");
+    //5. useState는 todos(상태유지값) 과 useState(값을 갱신하는 함수) 를 반환하여 초기값이 []로> 배열로 찍혀나온다.
+            // --console.log("3");
 
     function inputChange(event) {
-        console.log("4");
+        //7. input 태그에 텍스트를 입력하면 변화가 일어나며 이벤트함수가 발동된다.
+            // console.log("4");
         
         setTdInput(event.target.value);
-        console.log("5");
-    }
+        //9. inputChange 이벤트가 일어난 타겟의 value를 setTdInput에 넣어준다.
+        //10. tdInput에 값이 변경된다.?(덮어진다?)
+            // --console.log("5");
+    };
    
     function addTodoBtn(event) {
-        console.log("6")
-        // 기존값을 들고 있다. 
+        //12. 추가 버튼을 클릭하면 addTodoBtn 이벤트함수가 발동된다.
+            // --console.log("6");
+
+            // 기존값을 들고 있다. 
         setTodos(todos => [...todos, tdInput]);
-        console.log("7");
+        //13. todos 를 펼치고 tdInput의 값고 같이 배열을 만들어준다.
+            // --console.log("7");
         setTdInput("");
-        console.log("8");
-    }
-    console.log("9");
+        //14. setTdInput의 값을 비워준다.
+            // --console.log("8");
+    };
+            // console.log("9");
 
     function deleteTodoBtn(todo) {
-        console.log("10");
+        //15. deleteTodoBtn 버튼을 클릭하면 이벤트함수가 발동된다.
+            // --console.log("10");
 
         const targetIndex = todos.findIndex(value => value === todo);
-        console.log("11");
+        //16. todos의 배열의 순서와 todo 배열의 순서가 일치하면 targetIndex에 값을 넣는다.
+            // --console.log("11");
 
         const updatedTodos = [...todos]; 
-        console.log("12");
-        updatedTodos.splice(targetIndex, 1);
-        console.log("13");
-        setTodos(updatedTodos);
-        console.log("14");
-    }
+        //17. todos를 펼쳐 배열로 묶어준다.
+            // --console.log("12");
 
+        updatedTodos.splice(targetIndex, 1);
+        //18. updatedTodos 배열에서 targetIndex의 값에 표출된 순서의 요소를 한개 제거 한다.
+            // --console.log("13");
+
+        setTodos(updatedTodos);
+        //19. updatedTodos값을 setTodos값에 넣어준다.
+        //20. todos에 값이 적용
+            // --console.log("14");
+    };
+
+
+    // 이동
     // const todoComplete = querySelector("#todoCompleteId");
     // console.log("15");
 
@@ -78,27 +98,22 @@ function TodoList() {
                     </span>
                 </li>
             </ul>
-            {/* <ul id="todoCompleteId" className="todoComplete">
-
-            </ul> */}
         </>
     );
 
-
-    // const todos = ["코드깎는노인 구독하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
-    // const todos2 = todos;
-    // todos2[0] = "코드깎는노인 구독 취소하기";
+    //콘솔 찍히는 순서
     
-    // console.log(todos);
-    // console.log("---------------------");
-    // console.log(todos2);
-
-    /// 룬 예상
-    // todos = ["코드깎는노인 구독하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
-    // todos2 = ["코드깎는노인 구독 취소하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
+    //1239 , 451239, 6781239, 10111213141239
+    
 
 
 
+
+
+}
+
+
+export default TodoList;
 
     // 1. TodoList 시작
     // 2. useState는 tdInput(상태유지값) 과 setTdInput(값을 갱신하는 함수) 을 반환하여 초기값이 1로 찍혀나온다.
@@ -133,7 +148,21 @@ function TodoList() {
         // 1. todo 값 과 같은 값을 가지는 값을 todos에서 찾는다.
         // 2. 찾은 값을 todos 에서 제거한다.
         // 3. 해당 항목을 제거한 todos 를 반영시킨다.
-}
 
 
-export default TodoList;
+
+
+
+
+
+    // const todos = ["코드깎는노인 구독하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
+    // const todos2 = todos;
+    // todos2[0] = "코드깎는노인 구독 취소하기";
+    
+    // console.log(todos);
+    // console.log("---------------------");
+    // console.log(todos2);
+
+    /// 룬 예상
+    // todos = ["코드깎는노인 구독하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
+    // todos2 = ["코드깎는노인 구독 취소하기", "제로초 구독하기", ["위구룬", "공부하기", "퇴근은없다"]];
